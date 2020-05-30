@@ -57,5 +57,10 @@ for ob in bpy.context.view_layer.objects:
                         ob.select_set(True)
                         bpy.context.view_layer.objects.active = ob     
                         bpy.ops.object.join()
+                        
+print("-renaming object")
+for objx in bpy.context.view_layer.objects:
+    objx.name = "chunk" + str(objx.location.x) + "_" + str(objx.location.y)
+    objx.data.name = "chunk" + str(objx.location.x) + "_" + str(objx.location.y)
 
 print("terrain grid done")

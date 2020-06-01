@@ -54,8 +54,8 @@ print(" - rename and duplicate for collisionshapes for godot")
 for objy in bpy.data.objects:
     bpy.ops.object.select_all(action='DESELECT')
     if objy.type == 'MESH':
-        objy.name = "chunk" + str(objy.location.x) + "_" + str(objy.location.y)
-        objy.data.name = "chunk" + str(objy.location.x) + "_" + str(objy.location.y)
+        objy.name = "chunk" + str(int(objy.location.x)) + "_" + str(int(objy.location.y))
+        objy.data.name = "chunk" + str(int(objy.location.x)) + "_" + str(int(objy.location.y))
         objy.select_set(True)
         bpy.ops.object.duplicate()
         for objz in bpy.context.selected_objects:
@@ -65,3 +65,4 @@ for objy in bpy.data.objects:
             objz.matrix_parent_inverse = objy.matrix_world.inverted()
 print("terrain grid done")
 #bpy.ops.object.transform_apply(location = True, scale = True, rotation = True)
+#TODO triangulate
